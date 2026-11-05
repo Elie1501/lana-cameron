@@ -133,7 +133,7 @@
             text-align: center;
             padding: 50px 28px 40px;
             background:
-                radial-gradient(ellipse 60% 56% at 50% 50%, rgba(251,244,238,1) 0%, rgba(251,244,238,.97) 52%, rgba(251,244,238,.6) 78%, rgba(251,244,238,.12) 100%),
+                radial-gradient(ellipse 60% 56% at 50% 50%, rgba(251,244,238,.8) 0%, rgba(251,244,238,.68) 45%, rgba(251,244,238,.3) 75%, rgba(251,244,238,0) 100%),
                 url('fond.jpg') center / cover no-repeat;
         }
         .cover::before {
@@ -156,6 +156,8 @@
         .cover-date .dot { color: var(--rose); }
         .frise { width: min(520px, 92%); height: 20px; margin: 20px auto 0; background: url('frise.jpg') center / 100% 100% no-repeat; }
 
+        .cover .names, .cover-date, .invited, .invited-sub { text-shadow: 0 0 2px rgba(251,244,238,.95), 0 0 10px rgba(251,244,238,.9), 0 0 22px rgba(251,244,238,.7); }
+        .cover .invited { color: var(--rose-fonce); }
         .cover-middle { width: 100%; animation: rise 1.3s .25s cubic-bezier(.2,.7,.2,1) both; }
         .invited { font-family: 'Pinyon Script', cursive; font-size: clamp(2.2rem, 9vw, 3rem); color: var(--rose); line-height: 1.1; }
         .invited-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600; font-size: 1.35rem; color: var(--marron); margin-top: 4px; }

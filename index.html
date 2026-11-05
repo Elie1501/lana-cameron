@@ -111,14 +111,18 @@
         }
         .page-body::before { left: 0; }
         .page-body::after { right: 0; transform: scaleX(-1); }
-        .watermark {
-            position: absolute; inset: 0; pointer-events: none;
+        .watermark { position: absolute; inset: 0; pointer-events: none; }
+        .watermark::before {
+            content: ""; position: absolute; inset: 0;
             background: url('fond.jpg') center / cover no-repeat;
             opacity: .07;
         }
-        .corner { position: absolute; width: 84px; height: 84px; z-index: 2; background: url('coin.jpg') center / cover; pointer-events: none; }
-        .corner.bl { bottom: 0; left: 0; transform: scaleY(-1); }
-        .corner.br { bottom: 0; right: 0; transform: scale(-1, -1); }
+        /* frise horizontale qui ferme le cadre en bas de page */
+        .watermark::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px;
+            background: url('frise.jpg') center / auto 100% repeat-x;
+            z-index: 2;
+        }
         .inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
 
         /* ---------- Ouverture ---------- */
@@ -383,7 +387,6 @@
             .welcome .page-body::before { display: block; }
             .page-hero { height: 42vh; min-height: 270px; }
             .page-body { padding: 40px calc(var(--bord) + 14px) 50px; }
-            .corner { width: 56px; height: 56px; }
             h2 { font-size: 2.1rem; }
             .venue { font-size: 1.75rem; }
             .rsvp { padding: 0 20px 34px; }
@@ -495,7 +498,6 @@
         </div>
         <div class="page-body">
             <div class="watermark"></div>
-            <div class="corner bl"></div><div class="corner br"></div>
             <div class="inner">
                 <div class="names" style="font-size:clamp(2.6rem,11vw,3.8rem)"><span>Lana</span><span class="amp">&amp;</span><span>Cameron</span></div>
                 <p class="lead">se diront « Oui »</p>
@@ -529,7 +531,6 @@
         </div>
         <div class="page-body">
             <div class="watermark"></div>
-            <div class="corner bl"></div><div class="corner br"></div>
             <div class="inner">
                 <div class="medallion"></div>
                 <p class="lead">La cérémonie civile sera suivie d'un</p>
@@ -563,7 +564,6 @@
         </div>
         <div class="page-body">
             <div class="watermark"></div>
-            <div class="corner bl"></div><div class="corner br"></div>
             <div class="inner">
                 <!-- Noms des parents à ajouter ici, suivis de : « ont la joie de vous faire part du mariage de leurs enfants » -->
                 <div class="names" style="font-size:clamp(2.6rem,11vw,3.8rem)"><span>Lana</span><span class="amp">&amp;</span><span>Cameron</span></div>

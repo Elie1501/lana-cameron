@@ -197,8 +197,8 @@
         .welcome .names { font-size: clamp(2.6rem, 11vw, 3.8rem); margin: 8px 0 6px; }
 
         .medallion {
-            width: 58px; height: 58px; margin: 0 auto 20px; border-radius: 50%;
-            background: url('fond.jpg') center / 240px auto;
+            width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 50%;
+            background: #fff url('logo.png') center 52% / 58% auto no-repeat;
             border: 3px solid var(--creme);
             box-shadow: 0 0 0 1.5px var(--marron), 0 8px 20px rgba(74, 42, 28, .2);
         }
@@ -280,6 +280,27 @@
             transition: background .25s, color .25s, border-color .25s;
         }
         .btn-line:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
+
+        /* Familles (Houppa) */
+        .families { display: flex; justify-content: center; align-items: stretch; gap: 0; margin: 4px auto 14px; max-width: 460px; }
+        .families div {
+            flex: 1; font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 700; color: var(--marron);
+            padding: 4px 18px;
+        }
+        .families div:first-child { text-align: right; border-right: 1.5px solid var(--rose); }
+        .families div:last-child { text-align: left; }
+
+        /* Pensée pour les grands-parents */
+        .tribute {
+            position: relative; margin: 34px auto 0; max-width: 480px;
+            padding: 30px 26px 26px; border-radius: 6px;
+            background: rgba(255,255,255,.75);
+            border: 1px solid rgba(126, 90, 65, .3);
+        }
+        .tribute .medallion { width: 48px; height: 48px; margin: -54px auto 14px; }
+        .tribute-title { font-family: 'Pinyon Script', cursive; font-size: 2.3rem; color: var(--rose); line-height: 1.1; }
+        .tribute p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.22rem; line-height: 1.6; color: var(--marron); margin-top: 8px; }
+        .tribute strong { font-style: normal; font-weight: 700; }
 
         /* Précédent / suivant */
         .pager { display: flex; justify-content: space-between; gap: 12px; width: 100%; max-width: 480px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(126,90,65,.25); }
@@ -393,6 +414,8 @@
             .rsvp .card-frise { margin: 0 -20px 26px; }
             .row { grid-template-columns: 1fr; gap: 0; }
             .lead br { display: none; }
+            .families div { font-size: 1.12rem; padding: 4px 9px; white-space: nowrap; }
+            .tribute { padding: 26px 18px 22px; }
         }
         @media (max-width: 380px) {
             .cd-num { font-size: 1.5rem; }
@@ -565,9 +588,11 @@
         <div class="page-body">
             <div class="watermark"></div>
             <div class="inner">
-                <!-- Noms des parents à ajouter ici, suivis de : « ont la joie de vous faire part du mariage de leurs enfants » -->
+                <div class="medallion"></div>
+                <div class="families"><div>Famille Perez</div><div>Famille Benhamou</div></div>
+                <p class="lead">ont l'honneur de vous faire part du mariage de leurs enfants</p>
                 <div class="names" style="font-size:clamp(2.6rem,11vw,3.8rem)"><span>Lana</span><span class="amp">&amp;</span><span>Cameron</span></div>
-                <p class="lead">seront honorés de votre présence à la cérémonie religieuse <br>qui sera célébrée Bé'ézrat Hachem</p>
+                <p class="lead">et seront honorés de votre présence à la cérémonie religieuse <br>qui sera célébrée Bé'ézrat Hachem</p>
 
                 <div class="event-card">
                     <div class="card-frise"></div>
@@ -582,6 +607,12 @@
                         <a class="btn-line" href="https://waze.com/ul?q=Les%20Pyramides%2C%2016%20avenue%20de%20Saint-Germain%2C%2078560%20Le%20Port-Marly&navigate=yes" target="_blank" rel="noopener">Waze</a>
                         <a class="btn-line" href="https://www.google.com/maps/search/?api=1&query=Les%20Pyramides%2C%2016%20avenue%20de%20Saint-Germain%2C%2078560%20Le%20Port-Marly" target="_blank" rel="noopener">Google Maps</a>
                     </div>
+                </div>
+
+                <div class="tribute">
+                    <div class="medallion"></div>
+                    <div class="tribute-title">Une pensée émue</div>
+                    <p>pour nos grands-parents <strong>Sol Perez</strong> et <strong>Prosper Benhamou</strong>, qui nous manqueront tant en ce jour unique.<br>Que leur bénédiction illumine notre vie.</p>
                 </div>
 
                 <div class="pager">

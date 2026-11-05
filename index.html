@@ -117,12 +117,7 @@
             background: url('fond.jpg') center / cover no-repeat;
             opacity: .07;
         }
-        /* frise horizontale qui ferme le cadre en bas de page */
-        .watermark::after {
-            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px;
-            background: url('frise.jpg') center / auto 100% repeat-x;
-            z-index: 2;
-        }
+        /* le cadre est fermé en bas par la frise du pied de page */
         .inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
 
         /* ---------- Ouverture ---------- */

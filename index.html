@@ -771,8 +771,8 @@
         music.addEventListener("error", () => { musicBtn.hidden = true; });
         music.addEventListener("play", () => { musicBtn.classList.add("playing"); musicBtn.setAttribute("aria-label", "Couper la musique"); });
         music.addEventListener("pause", () => { musicBtn.classList.remove("playing"); musicBtn.setAttribute("aria-label", "Lancer la musique"); });
-        // La musique commence à 15 s, et reprend à 15 s quand elle boucle
-        const MUSIC_START = 15;
+        // musique.mp3 est déjà coupée pour commencer à 15 s du morceau ; elle boucle depuis le début du fichier
+        const MUSIC_START = 0;
         let userPaused = false;
         music.addEventListener("loadedmetadata", () => { if (music.currentTime < MUSIC_START) music.currentTime = MUSIC_START; }, { once: true });
         music.addEventListener("ended", () => { music.currentTime = MUSIC_START; music.play().catch(() => {}); });

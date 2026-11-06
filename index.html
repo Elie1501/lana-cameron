@@ -502,7 +502,7 @@
                             <div class="tl-arrow">→</div>
                         </a></li>
                         <li><a href="#houppa">
-                            <div class="tl-day">Dim. 28<small>Mars</small></div>
+                            <div class="tl-day">Dim. 28<small>Mars · 17h30</small></div>
                             <div><div class="tl-what">Houppa &amp; Soirée</div><div class="tl-where">Les Pyramides · La Marquise</div></div>
                             <div class="tl-arrow">→</div>
                         </a></li>
@@ -597,7 +597,7 @@
                     <div class="card-frise"></div>
                     <div class="event-date">Dimanche 28 mars 2027</div>
                     <div class="event-hebrew">19 Adar II 5787</div>
-                    <!-- Heure de la houppa à confirmer : <div><span class="event-time">à 18h précises</span></div> -->
+                    <div><span class="event-time">à 17h30</span></div>
                     <div class="venue" style="margin-top:20px">Complexe Les Pyramides</div>
                     <div class="venue-sub">Salon La Marquise</div>
                     <div class="address">16 avenue de Saint-Germain<br>78560 Le Port-Marly</div>
@@ -720,8 +720,8 @@
         // --- URL DU SCRIPT GOOGLE (à renseigner) ---
         const SCRIPT_URL = "";
 
-        // ---------- Compte à rebours (houppa, heure à confirmer) ----------
-        const weddingDate = new Date("2027-03-28T18:00:00").getTime();
+        // ---------- Compte à rebours (houppa, 17h30) ----------
+        const weddingDate = new Date("2027-03-28T17:30:00").getTime();
         const pad = n => String(n).padStart(2, "0");
         function tick() {
             const d = Math.max(0, weddingDate - Date.now());

@@ -429,7 +429,7 @@
 <body class="on-cover">
 
     <!-- Musique : déposer « musique.mp3 » dans ce dossier. Tant qu'il n'existe pas, le bouton reste caché. -->
-    <audio id="bgMusic" src="musique.mp3" loop preload="auto"></audio>
+    <audio id="bgMusic" src="musique.mp3" preload="auto"></audio>
     <button class="music-btn" id="musicBtn" aria-label="Lancer la musique" hidden>
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
         <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -771,9 +771,21 @@
         music.addEventListener("error", () => { musicBtn.hidden = true; });
         music.addEventListener("play", () => { musicBtn.classList.add("playing"); musicBtn.setAttribute("aria-label", "Couper la musique"); });
         music.addEventListener("pause", () => { musicBtn.classList.remove("playing"); musicBtn.setAttribute("aria-label", "Lancer la musique"); });
-        musicBtn.addEventListener("click", () => music.paused ? music.play().catch(() => {}) : music.pause());
-        // Le navigateur exige un clic pour lancer le son : on démarre au clic sur « Voir l'invitation »
-        document.getElementById("openBtn").addEventListener("click", () => { if (!music.error) music.play().catch(() => {}); });
+        // La musique commence à 15 s, et reprend à 15 s quand elle boucle
+        const MUSIC_START = 15;
+        let userPaused = false;
+        music.addEventListener("loadedmetadata", () => { if (music.currentTime < MUSIC_START) music.currentTime = MUSIC_START; }, { once: true });
+        music.addEventListener("ended", () => { music.currentTime = MUSIC_START; music.play().catch(() => {}); });
+        const startMusic = () => { if (!music.error && !userPaused && music.paused) music.play().catch(() => {}); };
+        musicBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (music.paused) { userPaused = false; music.play().catch(() => {}); } else { userPaused = true; music.pause(); }
+        });
+        // On essaie de lancer le son dès l'arrivée. Si le navigateur le bloque (iPhone, Chrome…),
+        // il démarre au tout premier contact avec la page, n'importe où.
+        startMusic();
+        const firstTouch = () => { startMusic(); if (!music.paused) ["pointerdown", "touchend", "keydown"].forEach(ev => document.removeEventListener(ev, firstTouch, true)); };
+        ["pointerdown", "touchend", "keydown"].forEach(ev => document.addEventListener(ev, firstTouch, true));
 
         // ---------- Formulaire ----------
         const form = document.getElementById("rsvpForm");

@@ -243,6 +243,9 @@
             background: url('frise.jpg') center / auto 100% repeat-x;
         }
         .page-hero > div { position: relative; z-index: 2; }
+        /* titre en haut quand le sujet de la photo est en bas (alliances) */
+        .page-hero.hero-top { justify-content: flex-start; padding: 34px 20px 0; }
+        .page-hero.hero-top::before { background: linear-gradient(180deg, rgba(74,42,28,.7) 0%, rgba(74,42,28,0) 55%); }
         .page-hero .eyebrow { color: var(--rose-clair); }
         .page-hero h2 { color: #fff; margin-bottom: 0; text-shadow: 0 3px 20px rgba(0,0,0,.3); }
 
@@ -577,8 +580,8 @@
 
     <!-- ================= HOUPPA & SOIRÉE ================= -->
     <section class="page" id="houppa" data-title="Houppa & Soirée">
-        <div class="page-hero">
-            <img class="ph" src="photo5.jpg" alt="" onerror="this.onerror=null;this.src='fond.jpg'">
+        <div class="page-hero hero-top">
+            <img class="ph" style="object-position: 50% 92%" src="houppa.jpg" alt="Les alliances devant Les Pyramides" onerror="this.onerror=null;this.src='fond.jpg'">
             <div><div class="eyebrow">Dimanche 28 mars 2027</div><h2>Houppa &amp; Soirée</h2></div>
         </div>
         <div class="page-body">

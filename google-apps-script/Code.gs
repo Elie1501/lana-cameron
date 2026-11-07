@@ -12,7 +12,7 @@
 
 const SHEET_ID = "16EsuQgkQ_2PTlFOBsbl0H42MM95OSeUP_P6mxLpIJLc";
 const ONGLET = "Réponses";
-const VERSION = 1;
+const VERSION = 2;
 
 function doPost(e) {
   const p = (e && e.parameter) || {};
@@ -35,8 +35,7 @@ function doPost(e) {
       clean(p.henne),
       num(p.nb_henne),
       clean(p.houppa),
-      num(p.nb_houppa),
-      num(p.nb_soiree),
+      num(p.nb_houppa),   // un seul nombre pour la houppa et la soirée
       clean(p.message)
     ]);
   } finally {

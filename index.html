@@ -701,6 +701,8 @@
                         <textarea id="message" name="message" rows="2"></textarea>
                     </div>
 
+                    <!-- champ piège invisible : seuls les robots le remplissent -->
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
                     <button type="submit" class="submit">Envoyer</button>
                 </form>
 
@@ -717,8 +719,8 @@
     </section>
 
     <script>
-        // --- URL DU SCRIPT GOOGLE (à renseigner) ---
-        const SCRIPT_URL = "";
+        // --- Script Google : les réponses arrivent dans le Sheet « Réponses mariage — Lana & Cameron » ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ4DJKIg9E3hIzl4HGOAsCTjKl1bSKLVj2939q9udjl12csZsBLXd_8pWa0F2tiBeP/exec";
 
         // ---------- Compte à rebours (houppa, 17h30) ----------
         const weddingDate = new Date("2027-03-28T17:30:00").getTime();
@@ -801,9 +803,11 @@
             const btn = form.querySelector(".submit");
             if (!SCRIPT_URL) { alert("Le formulaire n'est pas encore relié. Merci de réessayer un peu plus tard."); return; }
             btn.disabled = true; btn.textContent = "Envoi en cours…";
-            fetch(SCRIPT_URL, { method: "POST", body: new FormData(form) })
+            // Envoi simple (pas de pré-requête) vers le script Google ; la réponse n'est pas lisible en « no-cors »
+            const payload = new URLSearchParams(new FormData(form));
+            fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: payload })
                 .then(() => { form.style.display = "none"; document.getElementById("success").style.display = "block"; })
-                .catch(() => { btn.disabled = false; btn.textContent = "Erreur — réessayer"; alert("Une erreur est survenue. Merci de réessayer."); });
+                .catch(() => { btn.disabled = false; btn.textContent = "Erreur — réessayer"; alert("Envoi impossible. Vérifiez votre connexion et réessayez."); });
         });
     </script>
 </body>

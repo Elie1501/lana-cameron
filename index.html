@@ -83,6 +83,11 @@
         .nav-links a.nav-rsvp::after { display: none; }
         .nav-links a.nav-rsvp:hover, .nav-links a.nav-rsvp.active { background: var(--rose); color: #fff; }
 
+        /* petit bouton « Répondre » toujours visible dans la barre (téléphone) */
+        .nav-right { display: flex; align-items: center; gap: 6px; }
+        .nav-quick { display: none; text-decoration: none; background: var(--rose); color: #fff;
+            font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;
+            padding: 9px 14px; border-radius: 30px; box-shadow: 0 4px 12px rgba(217,132,155,.35); }
         .burger { display: none; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; position: relative; }
         .burger span { position: absolute; left: 11px; width: 22px; height: 1.5px; background: var(--marron); transition: transform .3s, opacity .3s, top .3s; }
         .burger span:nth-child(1) { top: 15px; }
@@ -386,6 +391,7 @@
             :root { --bord: 13px; }
             .nav { padding: 0 12px 0 16px; }
             .burger { display: block; }
+            .nav-quick { display: inline-block; }
             .nav-links {
                 position: fixed; top: calc(var(--nav-h) + 8px); left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
@@ -438,15 +444,18 @@
     <!-- ================= MENU ================= -->
     <nav class="nav" id="nav">
         <a href="#accueil" class="nav-logo" aria-label="Accueil"><img src="logo.png" alt="L C"></a>
+        <div class="nav-right">
+        <a href="#rsvp" class="nav-quick">Répondre</a>
         <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
             <span></span><span></span><span></span>
         </button>
+        </div>
         <ul class="nav-links" id="menu">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#mairie">Mairie</a></li>
             <li><a href="#henne">After Henné</a></li>
             <li><a href="#houppa">Houppa &amp; Soirée</a></li>
-            <li><a href="#rsvp">Réponse</a></li>
+            <li><a href="#rsvp" class="nav-rsvp">Réponse</a></li>
         </ul>
     </nav>
 

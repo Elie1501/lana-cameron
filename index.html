@@ -182,7 +182,7 @@
             box-shadow: 0 0 0 4px var(--creme), 0 0 0 5px var(--marron-clair), 0 12px 26px rgba(217, 132, 155, .45);
             transition: transform .25s, background .25s;
         }
-        .btn:hover { transform: translateY(-2px); background: var(--rose-fonce); }
+        @media (hover: hover) { .btn:hover { transform: translateY(-2px); background: var(--rose-fonce); } }
 
         /* ---------- Accueil : photo + programme ---------- */
         .ph { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
@@ -789,6 +789,13 @@
         startMusic();
         const firstTouch = () => { startMusic(); if (!music.paused) ["pointerdown", "touchend", "keydown"].forEach(ev => document.removeEventListener(ev, firstTouch, true)); };
         ["pointerdown", "touchend", "keydown"].forEach(ev => document.addEventListener(ev, firstTouch, true));
+
+        // Bouton « Voir l'invitation » : un seul appui lance la musique ET ouvre l'invitation.
+        // Sur téléphone on agit dès que le doigt se lève, sans attendre le clic que certains navigateurs annulent.
+        const openBtn = document.getElementById("openBtn");
+        const openInvitation = (e) => { e.preventDefault(); startMusic(); location.hash = "#accueil"; };
+        openBtn.addEventListener("touchend", openInvitation);
+        openBtn.addEventListener("click", openInvitation);
 
         // ---------- Formulaire ----------
         const form = document.getElementById("rsvpForm");
